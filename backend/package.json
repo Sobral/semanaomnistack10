@@ -1,0 +1,8 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend do projeto devradar desenvolvido durante a semana omnistack",
+  "main": "index.js",
+  "author": "Luciano Sobral",
+  "license": "MIT"
+}
