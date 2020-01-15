@@ -1,2 +1,4 @@
 *.lock
 */node_modules/*
+
+backend/src/config/config.json
