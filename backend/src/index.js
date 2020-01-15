@@ -10,7 +10,9 @@ const app = express();
 moogoose.connect('mongodb+srv://omnistack:omnistack@devradarcluster-hcvki.mongodb.net/week10?retryWrites=true&w=majority',
 {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
 });
 
 app.use(express.json());
