@@ -3,6 +3,7 @@ import React from 'react';
 import './global.css';
 import './Sidebar.css'
 import './App.css';
+import './Main.css';
 
 function App() {
   return (
@@ -37,7 +38,57 @@ function App() {
         </form>
       </aside>
       <main>
+        <ul>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
+              <div className="user-info">
+                <strong>Luciano Sobral</strong>
+                <span>React, Nodejs, Python</span>
+
+              </div>
+            </header>
+            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
+            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
+          </li>
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
+              <div className="user-info">
+                <strong>Luciano Sobral</strong>
+                <span>React, Nodejs, Python</span>
+
+              </div>
+            </header>
+            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
+            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
+          </li >
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
+              <div className="user-info">
+                <strong>Luciano Sobral</strong>
+                <span>React, Nodejs, Python</span>
+
+              </div>
+            </header>
+            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
+            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
+          </li>
+
+          <li className="dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
+              <div className="user-info">
+                <strong>Luciano Sobral</strong>
+                <span>React, Nodejs, Python</span>
+              </div>
+            </header>
+            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
+            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
+          </li>
         
+        </ul>
       </main>
     </div>
   );
