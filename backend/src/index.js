@@ -1,7 +1,7 @@
 const express = require('express');
 const moogoose = require('mongoose');
 const {usuario, senha, banco} = require('./config/config.json')
-
+const cors = require('cors');
 const routes = require('./routes');
 
 
@@ -15,6 +15,7 @@ moogoose.connect(`mongodb+srv://${usuario}:${senha}@devradarcluster-hcvki.mongod
     useCreateIndex: true,
 });
 
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 
