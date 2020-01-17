@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import api from './services/api';
 
 import './global.css';
 import './Sidebar.css'
@@ -12,6 +13,21 @@ function App() {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
+  async function handleAddDev(e){
+    e.preventDefault();
+    const response = await api.post('/devs', {
+      github_username: github_username,
+      techs: techs,
+      latitude: latitude,
+      longitude: longitude,
+    });
+
+    console.log(response.data);
+    setGithubUsername('');
+    setTechs('');
+    setLongitude('');
+    setLatitude('');
+  }
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -33,7 +49,7 @@ function App() {
     <div id="app">
       <aside>
         <strong>Cadastrar</strong>
-        <form>
+        <form onSubmit={handleAddDev}>
           <div className="input-block">
             <label htmlFor="github_username">Usuário do GitHub</label>
             <input name="github_username" id="github_username" required
