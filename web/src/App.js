@@ -9,7 +9,7 @@ import './Main.css';
 function App() {
   const [github_username, setGithubUsername] = useState('');
   const [techs, setTechs] = useState('');
-
+  const [devs, setDevs] = useState([]);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
@@ -22,13 +22,12 @@ function App() {
       longitude: longitude,
     });
 
-    console.log(response.data);
     setGithubUsername('');
     setTechs('');
     setLongitude('');
     setLatitude('');
   }
-
+  ///Recebe a latitude e a longitude do usuario automaticamente
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -43,6 +42,14 @@ function App() {
         timeout: 30000,
       }
     )
+  }, []);
+
+  useEffect(() => {
+    async function loadDevs(){
+      const response = await api.get('/devs');
+      setDevs(response.data);
+    }
+    loadDevs();
   }, []);
 
   return (
@@ -90,54 +97,19 @@ function App() {
       </aside>
       <main>
         <ul>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
-              <div className="user-info">
-                <strong>Luciano Sobral</strong>
-                <span>React, Nodejs, Python</span>
-
-              </div>
-            </header>
-            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
-            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
-          </li>
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
-              <div className="user-info">
-                <strong>Luciano Sobral</strong>
-                <span>React, Nodejs, Python</span>
-
-              </div>
-            </header>
-            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
-            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
-          </li >
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
-              <div className="user-info">
-                <strong>Luciano Sobral</strong>
-                <span>React, Nodejs, Python</span>
-
-              </div>
-            </header>
-            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
-            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
-          </li>
-
-          <li className="dev-item">
-            <header>
-              <img src="https://avatars1.githubusercontent.com/u/1907108?v=4" alt="Luciano Sobral"></img>
-              <div className="user-info">
-                <strong>Luciano Sobral</strong>
-                <span>React, Nodejs, Python</span>
-              </div>
-            </header>
-            <p>Desenvolvedor em progresso de Fullstack para criar MVPs</p>
-            <a href="https://github.com/Sobral">Acessar perfil no Github</a>
-          </li>
+          {devs.map(dev => (
+                      <li key={dev._id} className="dev-item">
+                      <header>
+                        <img src={dev.avatar_url} alt={dev.name}></img>
+                        <div className="user-info">
+                          <strong>{dev.name}</strong>
+                          <span>{dev.techs.join(', ')}</span>
+                        </div>
+                      </header>
+                      <p>{(dev.bio)?dev.bio:"Usuário sem bio declarada."}</p>
+                      <a href={`https://github.com/${dev.github_username}`}>Acessar perfil no Github</a>
+                    </li>
+          ))}
         
         </ul>
       </main>
