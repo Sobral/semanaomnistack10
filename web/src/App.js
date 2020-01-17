@@ -22,6 +22,7 @@ function App() {
       longitude: longitude,
     });
 
+    setDevs([...devs, response.data]);
     setGithubUsername('');
     setTechs('');
     setLongitude('');
